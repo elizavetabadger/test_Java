@@ -1,15 +1,24 @@
-/**
- * Реализовать алгоритм сортировки слиянием.
- */
-
-package HW3;
-
 import java.util.Arrays;
 import java.util.Random;
 
-public class task1 {
+/*
+Task1
+Пусть дан произвольный список целых чисел, удалить из него четные числа
 
-    public static void main(String[] args) {
+Task2
+Задан целочисленный список ArrayList. Найти минимальное, максимальное и среднее арифметическое из этого списка. Collections.max()
+
+Task3
+*Реализовать алгоритм сортировки слиянием
+ */
+public class Main {
+
+
+
+
+}
+    /*
+        public static void main(String[] args) {
         int[] array1 = randomArr();
         int[] result = mergesort(array1);
         System.out.println(Arrays.toString(result));
@@ -34,7 +43,7 @@ public class task1 {
     }
 
     public static int[] mergesortInner(int[] buffer1, int[] buffer2,
-            int startIndex, int endIndex) {
+                                       int startIndex, int endIndex) {
         if (startIndex >= endIndex - 1) {
             return buffer1;
         }
@@ -61,4 +70,4 @@ public class task1 {
         return result;
     }
 
-}
+}*/
