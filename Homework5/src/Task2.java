@@ -1,8 +1,8 @@
 import java.util.*;
 
 /*
-Пусть дан список сотрудников: Иван Иванов, Светлана Петрова, Кристина Белова, Анна Мусина, Анна Крутова, Иван Юрин, 
-Петр Лыков, Павел Чернов, Петр Чернышов, Мария Федорова, Марина Светлова, Мария Савина, Мария Рыкова, Марина Лугова, 
+Пусть дан список сотрудников: Иван Иванов, Светлана Петрова, Кристина Белова, Анна Мусина, Анна Крутова, Иван Юрин,
+Петр Лыков, Павел Чернов, Петр Чернышов, Мария Федорова, Марина Светлова, Мария Савина, Мария Рыкова, Марина Лугова,
 Анна Владимирова, Иван Мечников, Петр Петин, Иван Ежов.
 
 Написать программу, которая найдет и выведет повторяющиеся имена с количеством повторений.
@@ -12,33 +12,40 @@ import java.util.*;
 public class Task2 {
     public static void main(String[] arg) {
         Map<String, Integer> nameMap = new TreeMap<>();
-        String employees = "Иван Иванов " + "Светлана Петрова " + "Кристина Белова " + "Анна Мусина " + "Анна Крутова " +
-        "Иван Юрин " + "Петр Лыков " + "Павел Чернов " + "Петр Чернышов " + "Мария Федорова " + "Марина Светлова " +
-        "Мария Савина " + "Мария Рыкова " + "Марина Лугова " + "Анна Владимирова " + "Иван Мечников " + "Петр Петин " +
-        "Иван Ежов ";
-        String[] name = employees.split(" ");
-        for (int i = 0; i < name.length; i += 2) {
-            if (nameMap.containsKey(name[i])) {
-                nameMap.replace(name[i], nameMap.get(name[i]) + 1);
-            } else {
-                nameMap.put(name[i], 1);
+        String employees = "Иван Иванов, Светлана Петрова, Кристина Белова, Анна Мусина, Анна Крутова, Иван Юрин, " +
+                "Петр Лыков, Павел Чернов, Петр Чернышов, Мария Федорова, Марина Светлова, Мария Савина, Мария Рыкова, " +
+                "Марина Лугова, Анна Владимирова, Иван Мечников, Петр Петин, Иван Ежов";
+        String[] people = employees.split(", ");
+
+
+        for (int i = 0; i < people.length; i++) //индекс человека
+        {
+            String[] name = people[i].split(" ");
+            if (nameMap.containsKey(name[0]))
+            {
+                nameMap.replace(name[0], nameMap.get(name[0]) + 1);
+            }
+            else
+            {
+                nameMap.put(name[0], 1);
             }
         }
         System.out.println(nameMap);
 
-        Map<String, Integer> sortnameMap = new TreeMap<>();
-        int max = 1;
-        for (int value : nameMap.values()) {
-            if (value > max) {
-                max = value;
+        Map<Integer, List<String>> sortnameMap = new TreeMap<>((int1, int2) -> Integer.compare(int2, int1));
+        System.out.println(nameMap.keySet());
+
+        for (String name : nameMap.keySet()) //итерируемся по элементам списка
+        {
+            Integer countName = nameMap.get(name);
+            if (sortnameMap.containsKey(countName))
+            {
+                sortnameMap.get(countName).add(name); //вернули лист, дальше работаем с листом
             }
-        }
-        for (int i = max; i > 0; i--) {
-            for (Map.Entry<String, Integer> entry : nameMap.entrySet()) {
-                String key = entry.getKey();
-                if (nameMap.get(key) == i) {
-                    sortnameMap.put(key, nameMap.get(key));
-                }
+            else {
+                List listName = new LinkedList<>();
+                listName.add(name);
+                sortnameMap.put(countName, listName);
             }
         }
         System.out.println(sortnameMap);
