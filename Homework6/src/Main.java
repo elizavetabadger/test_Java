@@ -41,7 +41,7 @@ public class Main {
         Map<String, List<Notebook>> osMap = new HashMap<>();
         for (int i = 0; i < notebooksList.size(); i++) {
             Notebook exnotebook = notebooksList.get(i);
-            if (osMap.containsKey(exnotebook.getRam())) {
+            if (osMap.containsKey(exnotebook.getOs())) {
                 List<Notebook> osList = osMap.get(exnotebook.getOs());
                 osList.add(exnotebook);
             } else {
