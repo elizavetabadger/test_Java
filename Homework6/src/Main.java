@@ -21,8 +21,36 @@ public class Main {
                 ramList.add(exnotebook);
                 ramMap.put(exnotebook.getRam(), ramList);
             }
+
         }
-        System.out.println(ramMap);
+        ///System.out.println(ramMap);
+        Map<Integer, List<Notebook>> ssdMap = new HashMap<>();
+        for (int i = 0; i < notebooksList.size(); i++) {
+            Notebook exnotebook = notebooksList.get(i);
+            if (ssdMap.containsKey(exnotebook.getSsd())) {
+                List<Notebook> ssdList = ssdMap.get(exnotebook.getSsd());
+                ssdList.add(exnotebook);
+            } else {
+                List<Notebook> ssdList = new ArrayList<>();
+                ssdList.add(exnotebook);
+                ssdMap.put(exnotebook.getSsd(), ssdList);
+            }
+
+        }
+
+        Map<String, List<Notebook>> osMap = new HashMap<>();
+        for (int i = 0; i < notebooksList.size(); i++) {
+            Notebook exnotebook = notebooksList.get(i);
+            if (osMap.containsKey(exnotebook.getRam())) {
+                List<Notebook> osList = osMap.get(exnotebook.getOs());
+                osList.add(exnotebook);
+            } else {
+                List<Notebook> osList = new ArrayList<>();
+                osList.add(exnotebook);
+                osMap.put(exnotebook.getOs(), osList);
+            }
+
+        }
 
 
         System.out.println("Введите цифру, соответствующую необходимому критерию");
@@ -35,57 +63,42 @@ public class Main {
         int input = iScanner.nextInt();
 
 
-        if (input == 1){
+        if (input == 1) {
             System.out.printf("Введите значение: ");
             int ram = iScanner.nextInt();
             if (ramMap.containsKey(ram)) {
                 System.out.println(ramMap.get(ram));
+            } else {
+                System.out.println("Такого значения нет");
+            }
+
+        } else if (input == 2) {
+            System.out.printf("Введите значение: ");
+            int ssd = iScanner.nextInt();
+            if (ssdMap.containsKey(ssd)) {
+                System.out.println(ssdMap.get(ssd));
+            } else {
+                System.out.println("Такого значения нет");
+            }
+
+        }
+        /*else if (input == 3){
+            System.out.printf("Введите значение: ");
+            String os = iScanner.next();
+            if (osMap.containsKey(os)) {
+                System.out.println(osMap.get(os));
             }
             else {
                 System.out.println("Такого значения нет");
             }
 
         }
-       // else if (){
-
-       //}
-
-        iScanner.close();
-    }
-}
-        /*   Scanner iScanner = new Scanner(System.in);
-        System.out.printf("Введите число: ");
-        int input = iScanner.nextInt();
-        iScanner.close();
-
-        Integer choice = sc.nextInt();
-        if(choice == 1){
-
-            System.out.printf("Введите значение ОЗУ: ");
-            Integer ram = sc.nextInt();
-            if(){
-                System.out.println();
+        else {
+            System.out.printf("Что-то не то.");
             }
-
-        }else if(choice == 2){
-
-            System.out.println("Введите значение SSD: ");
-            Integer ssd = sc.nextInt();
-            if(){
-                System.out.println();
-            }
-
-        }else if(choice == 3){
-
-            System.out.println("Введите название OS");
-            Scanner sc1 = new Scanner(System.in);
-            String os = sc1.nextLine();
-            if()){
-                System.out.println();
-            };
         }
+        */
 
+        iScanner.close();
     }
-
 }
-*/
