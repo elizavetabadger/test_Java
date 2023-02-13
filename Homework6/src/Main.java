@@ -81,10 +81,11 @@ public class Main {
                 System.out.println("Такого значения нет");
             }
 
-        }
-        /*else if (input == 3){
-            System.out.printf("Введите значение: ");
-            String os = iScanner.next();
+        } else if (input == 3){
+            System.out.print("Введите значение: ");
+            iScanner.nextLine();  // Consume newline left-over
+            String os = iScanner.nextLine();
+            System.out.println(os);
             if (osMap.containsKey(os)) {
                 System.out.println(osMap.get(os));
             }
@@ -92,12 +93,9 @@ public class Main {
                 System.out.println("Такого значения нет");
             }
 
-        }
-        else {
+        } else {
             System.out.printf("Что-то не то.");
             }
-        }
-        */
 
         iScanner.close();
     }
